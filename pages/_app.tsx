@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app"
 import { AuthProvider } from "@/contexts/auth-context"
 import { Toaster } from "@/components/ui/toaster"
-import "@/styles/globals.css"
+// import "@/styles/globals.css"
 
 
 
