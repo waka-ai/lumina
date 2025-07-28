@@ -5,7 +5,8 @@ import type React from "react"
 import { createContext, useContext, useEffect, useState } from "react"
 import type { User } from "@supabase/supabase-js"
 import { getSupabaseClient } from "@/lib/supabase"
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/router"
+
 
 interface UserProfile {
   id: string
