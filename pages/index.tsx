@@ -25,57 +25,57 @@ const features = [
     icon: MessageCircle,
     title: "Social Feed",
     description: "Connect with friends and share your thoughts in a safe environment",
-    color: "text-blue-600",
-    bgColor: "bg-blue-100",
+    color: "#2563eb",
+    bgColor: "#dbeafe",
   },
   {
     icon: FileText,
     title: "Smart Notes",
     description: "Organize your thoughts with powerful note-taking and planning tools",
-    color: "text-green-600",
-    bgColor: "bg-green-100",
+    color: "#16a34a",
+    bgColor: "#dcfce7",
   },
   {
     icon: Palette,
     title: "Visual Drawing",
     description: "Express your creativity with our advanced digital drawing canvas",
-    color: "text-purple-600",
-    bgColor: "bg-purple-100",
+    color: "#9333ea",
+    bgColor: "#f3e8ff",
   },
   {
     icon: Globe,
     title: "Interactive Maps",
     description: "Explore and create stunning 3D maps with collaborative features",
-    color: "text-teal-600",
-    bgColor: "bg-teal-100",
+    color: "#0d9488",
+    bgColor: "#ccfbf1",
   },
   {
     icon: BookOpen,
     title: "Digital Library",
     description: "Read, organize, and track your progress through digital books",
-    color: "text-indigo-600",
-    bgColor: "bg-indigo-100",
+    color: "#4f46e5",
+    bgColor: "#e0e7ff",
   },
   {
     icon: Play,
     title: "Video Platform",
     description: "Share and discover educational and entertaining video content",
-    color: "text-red-600",
-    bgColor: "bg-red-100",
+    color: "#dc2626",
+    bgColor: "#fee2e2",
   },
   {
     icon: Brain,
     title: "Quiz System",
     description: "Create and take interactive quizzes to test your knowledge",
-    color: "text-orange-600",
-    bgColor: "bg-orange-100",
+    color: "#ea580c",
+    bgColor: "#ffedd5",
   },
   {
     icon: BarChart3,
     title: "Analytics",
     description: "Track your progress and engagement across all platform features",
-    color: "text-pink-600",
-    bgColor: "bg-pink-100",
+    color: "#db2777",
+    bgColor: "#fce7f3",
   },
 ]
 
@@ -115,27 +115,23 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="page-container">
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Shield className="h-5 w-5 text-white" />
+      <nav className="navbar">
+        <div className="container">
+          <div className="nav-content">
+            <div className="logo-container">
+              <div className="logo-icon">
+                <Shield className="logo-shield" />
               </div>
-              <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                SafeSocial
-              </span>
+              <span className="logo-text">SafeSocial</span>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="nav-buttons">
               <Link href="/auth/login">
                 <Button variant="ghost">Sign In</Button>
               </Link>
               <Link href="/auth/signup">
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                  Get Started
-                </Button>
+                <Button className="btn-primary">Get Started</Button>
               </Link>
             </div>
           </div>
@@ -143,86 +139,75 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-8">
-            <Badge className="mb-4 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border-blue-200">
-              <Zap className="h-3 w-3 mr-1" />
+      <section className="hero-section">
+        <div className="container text-center">
+          <div className="hero-content">
+            <Badge className="badge">
+              <Zap className="badge-icon" />
               All-in-One Platform
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="hero-title">
               Connect, Create, and
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                {" "}
-                Collaborate
-              </span>
+              <span className="hero-title-highlight"> Collaborate</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="hero-description">
               The complete social platform that brings together social networking, productivity tools, creative
               features, and learning resources in one secure, user-friendly environment.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="hero-buttons">
               <Link href="/auth/signup">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                >
+                <Button className="btn-primary btn-large">
                   Start Your Journey
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="btn-icon" />
                 </Button>
               </Link>
               <Link href="#features">
-                <Button size="lg" variant="outline" className="bg-white/50 backdrop-blur-sm">
-                  Explore Features
-                </Button>
+                <Button className="btn-secondary btn-large">Explore Features</Button>
               </Link>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+          <div className="stats-grid">
             {stats.map((stat, index) => {
-              const Icon = stat.icon
+              const Icon = stat.icon;
               return (
-                <div key={index} className="text-center">
-                  <div className="flex justify-center mb-2">
-                    <div className="p-3 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full">
-                      <Icon className="h-6 w-6 text-blue-600" />
-                    </div>
+                <div key={index} className="stat-item">
+                  <div className="stat-icon">
+                    <Icon className="stat-icon-inner" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="stat-value">{stat.value}</div>
+                  <div className="stat-label">{stat.label}</div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Everything You Need in One Platform</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+      <section id="features" className="features-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Everything You Need in One Platform</h2>
+            <p className="section-description">
               From social networking to productivity tools, creative features to learning resources - we've got you
               covered.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="features-grid">
             {features.map((feature, index) => {
               const Icon = feature.icon
               return (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-sm">
+                <Card key={index} className="feature-card">
                   <CardHeader>
-                    <div className={`w-12 h-12 ${feature.bgColor} rounded-lg flex items-center justify-center mb-4`}>
-                      <Icon className={`h-6 w-6 ${feature.color}`} />
+                    <div style={{ backgroundColor: feature.bgColor }} className="feature-icon">
+                      <Icon style={{ color: feature.color }} className="feature-icon-inner" />
                     </div>
-                    <CardTitle className="text-lg">{feature.title}</CardTitle>
+                    <CardTitle className="feature-title">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-gray-600">{feature.description}</CardDescription>
+                    <CardDescription className="feature-description">{feature.description}</CardDescription>
                   </CardContent>
                 </Card>
               )
@@ -232,32 +217,32 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Loved by Creators Worldwide</h2>
-            <p className="text-xl text-gray-600">See what our community has to say about their SafeSocial experience</p>
+      <section className="testimonials-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Loved by Creators Worldwide</h2>
+            <p className="section-description">See what our community has to say about their SafeSocial experience</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="testimonials-grid">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-sm bg-white/80 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
+              <Card key={index} className="testimonial-card">
+                <CardContent className="testimonial-content">
+                  <div className="testimonial-rating">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                      <Star key={i} className="star-icon" />
                     ))}
                   </div>
-                  <p className="text-gray-700 mb-4">"{testimonial.content}"</p>
-                  <div className="flex items-center">
+                  <p className="testimonial-text">"{testimonial.content}"</p>
+                  <div className="testimonial-author">
                     <img
                       src={testimonial.avatar || "/placeholder.svg"}
                       alt={testimonial.name}
-                      className="w-10 h-10 rounded-full mr-3"
+                      className="author-avatar"
                     />
                     <div>
-                      <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                      <div className="text-sm text-gray-600">{testimonial.role}</div>
+                      <div className="author-name">{testimonial.name}</div>
+                      <div className="author-role">{testimonial.role}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -268,120 +253,94 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Transform Your Digital Experience?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
+      <section className="cta-section">
+        <div className="container text-center">
+          <h2 className="cta-title">Ready to Transform Your Digital Experience?</h2>
+          <p className="cta-description">
             Join thousands of creators, learners, and innovators who have made SafeSocial their digital home.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="cta-buttons">
             <Link href="/auth/signup">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Button className="btn-cta btn-large">
                 Create Free Account
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="btn-icon" />
               </Button>
             </Link>
             <Link href="/auth/login">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
-                Sign In
-              </Button>
+              <Button className="btn-cta-secondary btn-large">Sign In</Button>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <Shield className="h-5 w-5 text-white" />
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-grid">
+            <div className="footer-about">
+              <div className="logo-container">
+                <div className="logo-icon">
+                  <Shield className="logo-shield" />
                 </div>
-                <span className="font-bold text-xl">SafeSocial</span>
+                <span className="logo-text">SafeSocial</span>
               </div>
-              <p className="text-gray-400 mb-4 max-w-md">
+              <p className="footer-description">
                 The complete social platform that brings together social networking, productivity tools, creative
                 features, and learning resources in one secure environment.
               </p>
-              <div className="flex items-center space-x-2 text-sm text-gray-400">
-                <CheckCircle className="h-4 w-4 text-green-400" />
+              <div className="footer-security">
+                <CheckCircle className="security-icon" />
                 <span>Secure & Private</span>
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Features</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h3 className="footer-section-title">Features</h3>
+              <ul className="footer-links">
                 <li>
-                  <Link href="#features" className="hover:text-white transition-colors">
-                    Social Feed
-                  </Link>
+                  <Link href="#features" className="footer-link">Social Feed</Link>
                 </li>
                 <li>
-                  <Link href="#features" className="hover:text-white transition-colors">
-                    Smart Notes
-                  </Link>
+                  <Link href="#features" className="footer-link">Smart Notes</Link>
                 </li>
                 <li>
-                  <Link href="#features" className="hover:text-white transition-colors">
-                    Visual Drawing
-                  </Link>
+                  <Link href="#features" className="footer-link">Visual Drawing</Link>
                 </li>
                 <li>
-                  <Link href="#features" className="hover:text-white transition-colors">
-                    Interactive Maps
-                  </Link>
+                  <Link href="#features" className="footer-link">Interactive Maps</Link>
                 </li>
                 <li>
-                  <Link href="#features" className="hover:text-white transition-colors">
-                    Digital Library
-                  </Link>
+                  <Link href="#features" className="footer-link">Digital Library</Link>
                 </li>
                 <li>
-                  <Link href="#features" className="hover:text-white transition-colors">
-                    Video Platform
-                  </Link>
+                  <Link href="#features" className="footer-link">Video Platform</Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h3 className="footer-section-title">Company</h3>
+              <ul className="footer-links">
                 <li>
-                  <Link href="/about" className="hover:text-white transition-colors">
-                    About Us
-                  </Link>
+                  <Link href="/about" className="footer-link">About Us</Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="hover:text-white transition-colors">
-                    Privacy Policy
-                  </Link>
+                  <Link href="/privacy" className="footer-link">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="hover:text-white transition-colors">
-                    Terms of Service
-                  </Link>
+                  <Link href="/terms" className="footer-link">Terms of Service</Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-white transition-colors">
-                    Contact
-                  </Link>
+                  <Link href="/contact" className="footer-link">Contact</Link>
                 </li>
                 <li>
-                  <Link href="/help" className="hover:text-white transition-colors">
-                    Help Center
-                  </Link>
+                  <Link href="/help" className="footer-link">Help Center</Link>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <div className="footer-bottom">
             <p>&copy; 2024 SafeSocial. All rights reserved. Built with ❤️ for creators and learners.</p>
           </div>
         </div>
@@ -389,6 +348,3 @@ export default function HomePage() {
     </div>
   )
 }
-
-
-

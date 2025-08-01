@@ -1,12 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { createContext, useContext, useEffect, useState } from "react"
 import type { User } from "@supabase/supabase-js"
 import { getSupabaseClient } from "@/lib/supabase"
 import { useRouter } from "next/router"
-
 
 interface UserProfile {
   id: string
@@ -30,6 +28,7 @@ interface AuthContextType {
   user: User | null
   userProfile: UserProfile | null
   loading: boolean
+  signIn: (email: string, password: string) => Promise<void>
   signOut: () => Promise<void>
   refreshProfile: () => Promise<void>
 }
@@ -38,6 +37,7 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   userProfile: null,
   loading: true,
+  signIn: async () => {},
   signOut: async () => {},
   refreshProfile: async () => {},
 })
@@ -86,22 +86,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchUserProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase.from("users").select("*").eq("id", userId).single()
+      const { data, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", userId)
+        .single()
 
       if (error) {
         console.error("Error fetching user profile:", error)
         return
       }
 
-      setUserProfile(data)
+      setUserProfile(data as unknown as UserProfile) // Double assertion to satisfy strict mode
     } catch (error) {
       console.error("Error fetching user profile:", error)
     }
   }
 
-  const refreshProfile = async () => {
-    if (user) {
-      await fetchUserProfile(user.id)
+  const signIn = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+    if (error) {
+      throw new Error(error.message)
     }
   }
 
@@ -116,12 +124,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  const refreshProfile = async () => {
+    if (user) {
+      await fetchUserProfile(user.id)
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user,
         userProfile,
         loading,
+        signIn,
         signOut,
         refreshProfile,
       }}
